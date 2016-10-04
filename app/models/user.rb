@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   validates :gamebus_id, uniqueness: true, presence: true
   validates :gamebus_key, presence: true
-  validates :rvs_id, uniqueness: true
+  validates :rvs_id, uniqueness: true, allow_nil: true
 
   def rvs_key_valid?
     return false unless rvs_key.present?
