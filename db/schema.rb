@@ -18,11 +18,13 @@ ActiveRecord::Schema.define(version: 20160930085456) do
   create_table "users", force: :cascade do |t|
     t.integer  "gamebus_id"
     t.integer  "rvs_id"
-    t.string   "synced_scores", default: [],              array: true
+    t.text     "synced_score_ids",    default: [],              array: true
+    t.text     "synced_bodystat_ids", default: [],              array: true
     t.string   "gamebus_key"
     t.string   "rvs_key"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "lock_version"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["gamebus_id"], name: "index_users_on_gamebus_id", using: :btree
     t.index ["rvs_id"], name: "index_users_on_rvs_id", using: :btree
   end
