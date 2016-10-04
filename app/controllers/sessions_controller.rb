@@ -17,18 +17,18 @@ class SessionsController < ApplicationController
   # Invalidate the rvs api-key and return true/false if succeeded
   def disconnect
     if @user = User.find_by_gamebus_id(params[:userid])
-      render text: @user.rvs_disconnect
+      render json: @user.rvs_disconnect
     else
-      render text: false
+      render json: false
     end
   end
 
   # Return true or false if the user is connected
   def status
     if @user = User.find_by_gamebus_id(params[:userid])
-      render text: @user.rvs_key_valid?
+      render json: @user.rvs_key_valid?
     else
-      render text: false
+      render json: false
     end
   end
 
