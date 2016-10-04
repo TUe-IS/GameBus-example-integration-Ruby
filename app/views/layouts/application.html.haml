@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Gamebus - RVS
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    .container
+      %h1= yield :title
+
+      - flash.each do |msg_type, message|
+        %div{class: "alert alert-#{msg_type}"}= message
+
+      .col-xs-12= yield

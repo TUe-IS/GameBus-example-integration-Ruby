@@ -1,0 +1,6 @@
+- content_for :title do
+  Connect to RVS
+= simple_form_for @user, url: login_path, html: { class: 'form-horizontal' } do |f|
+  = f.input :rvs_email
+  = f.input :rvs_password
+  = f.button :submit

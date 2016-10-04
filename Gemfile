@@ -1,12 +1,24 @@
+ruby '2.3.1'
 source 'https://rubygems.org'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgres as the database for Active Record
+gem 'pg', '~> 0.19'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+# Use sidekiq for background jobs
+gem 'sidekiq-scheduler', '~> 2.0'
+# User faraday to make http calls
+gem 'faraday', '~> 0.9.2'
+# Use haml for templates
+gem 'haml', '~> 4.0.7'
+# Use bootstrap as front-end css framework
+gem 'bootstrap-sass', '~> 3.3.7'
+# Use simple form for forms
+gem 'simple_form', '~> 3.3.1'
+
+
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

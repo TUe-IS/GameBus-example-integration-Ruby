@@ -1,0 +1,6 @@
+---
+:concurrency: 1
+:schedule:
+  SyncJob:
+    description: 'Sync the shit out of RVS'
+    cron: '0 4 * * *' # At 04:00

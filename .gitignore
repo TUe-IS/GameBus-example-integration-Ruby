@@ -19,3 +19,9 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore redis stuff
+*.rdb
+
+# Ignore json stuff in root
+*.json
