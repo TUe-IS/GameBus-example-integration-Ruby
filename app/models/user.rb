@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
   validates :gamebus_key, presence: true
   # validates :rvs_id, uniqueness: true, allow_nil: true
 
+  # Sync the user after update
+  after_commit do
+    SyncUserJob.perform_later id
+  end
+
   # Checks if the current rvs api_key is valid
   def rvs_key_valid?
     return false unless rvs_key.present?

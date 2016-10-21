@@ -10,7 +10,7 @@ class SyncUserJob < ApplicationJob
         end
       end
     else
-      raise "Invalid rvs key of user #{user.inspect} | response: #{bodystats_resp}"
+      raise "Invalid rvs key of user #{user.id} with gamebus id #{user.gamebus_id} and rvs id #{user.rvs_id}"
     end
   end
 end

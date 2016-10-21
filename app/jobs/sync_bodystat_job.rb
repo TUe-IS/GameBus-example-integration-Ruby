@@ -24,7 +24,7 @@ class SyncBodystatJob < ApplicationJob
     if activity_resp.status == 200
       user.add_to_array :synced_bodystat_ids, bodystat['id']
     else
-      raise "Invalid gamebus key of user #{user.inspect} | response: #{activity_resp.inspect}"
+      raise "Invalid gamebus key of user #{user.id} with gamebus id #{user.gamebus_id} and rvs id #{user.rvs_id}"
     end
   end
 end

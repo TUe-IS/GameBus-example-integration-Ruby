@@ -28,3 +28,6 @@
 
 # Ignore tryouts
 gamebus_tests/
+
+# Ignore redis database
+dump.rdb
