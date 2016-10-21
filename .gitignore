@@ -25,3 +25,6 @@
 
 # Ignore json stuff in root
 *.json
+
+# Ignore tryouts
+gamebus_tests/
