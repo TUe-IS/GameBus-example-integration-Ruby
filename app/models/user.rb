@@ -36,9 +36,9 @@ class User < ActiveRecord::Base
   # The faraday connection to rvs including authorization if present
   def rvs_connection
     connection = Faraday.new url: Rails.application.secrets.rvs_url do |faraday|
-      faraday.request  :url_encoded             # form-encode POST params
-      faraday.response :logger                  # log requests to STDOUT
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      faraday.request  :url_encoded                                              # form-encode POST params
+      faraday.response :logger if Rails.env.development? || ENV['DEBUG_FARADAY'] # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter                                   # make requests with Net::HTTP
     end
     connection.headers['Authorization'] = "Token #{rvs_key}" if rvs_key
     return connection
@@ -52,9 +52,9 @@ class User < ActiveRecord::Base
   # Faraday connection to gamebus with authorization setup
   def gamebus_connection
     connection = Faraday.new url: Rails.application.secrets.gamebus_url do |faraday|
-      faraday.request  :url_encoded                      # form-encode POST params
-      faraday.response :logger if Rails.env.development? # log requests to STDOUT
-      faraday.adapter  Faraday.default_adapter           # make requests with Net::HTTP
+      faraday.request  :url_encoded                                              # form-encode POST params
+      faraday.response :logger if Rails.env.development? || ENV['DEBUG_FARADAY'] # log requests to STDOUT
+      faraday.adapter  Faraday.default_adapter                                   # make requests with Net::HTTP
     end
     connection.headers['Authorization'] = "Bearer #{gamebus_key}"
     connection.headers['Content-Type'] = 'application/json'
