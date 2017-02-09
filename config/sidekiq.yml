@@ -3,4 +3,4 @@
 :schedule:
   SyncAllJob:
     description: 'Sync the shit out of RVS'
-    cron: '0 4 * * *' # At 04:00
+    cron: '0 * * * *' # Every hour
