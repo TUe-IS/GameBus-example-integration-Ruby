@@ -2,7 +2,7 @@ require 'sidekiq/web'
 require 'sidekiq-scheduler/web'
 
 Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-  username == 'not-just-any-admin' && password == 'just-a-random-password-for-protection'
+  username == 'admin' && password == Rails.application.secrets.sidekiq_password
 end if Rails.env.production?
 
 Rails.application.routes.draw do
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   patch :login, to: 'sessions#rvs_login'
   get :status, to: 'sessions#status'
   get :disconnect, to: 'sessions#disconnect'
-
 
   mount Sidekiq::Web => '/sidekiq'
 end
